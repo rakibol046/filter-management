@@ -40,6 +40,11 @@ public function index()
             ->latest()
             ->get();
 
+    if ($filters->isEmpty()) {
+        return redirect()->route('filters.create')
+            ->with('info', 'Please create a filter first before creating a kit.');
+    }
+
     return view('kits.create', [
         'title' => 'Create Kit',
         'filters' => $filters,

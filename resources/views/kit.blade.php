@@ -15,6 +15,11 @@
             </div>
         @endif
 
+        @if($filters->isEmpty())
+        <div class="rounded-xl border border-dashed p-10 text-center text-gray-500">
+            No Kits found.
+        </div>
+        @else
         <div class="space-y-6">
 
             @foreach($filters as $filter)
@@ -115,6 +120,7 @@
             @endforeach
 
         </div>
+         @endif
 
     </div>
 </x-layouts::app>

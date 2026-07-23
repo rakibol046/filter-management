@@ -17,13 +17,13 @@
                     <flux:sidebar.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Dashboard') }}
                     </flux:sidebar.item>
-                     <flux:sidebar.item icon="home" :href="route('filters')" :current="request()->routeIs('filters')" wire:navigate>
+                     <flux:sidebar.item icon="funnel" :href="route('filters')" :current="request()->routeIs('filters')" wire:navigate>
                         {{ __('Filters') }}
                     </flux:sidebar.item>
-                    <flux:sidebar.item icon="home" :href="route('kits')" :current="request()->routeIs('kits')" wire:navigate>
+                    <flux:sidebar.item icon="square-3-stack-3d" :href="route('kits')" :current="request()->routeIs('kits')" wire:navigate>
                         {{ __('Kits') }}
                     </flux:sidebar.item>
-                     <flux:sidebar.item icon="home" :href="route('history')" :current="request()->routeIs('history')" wire:navigate>
+                     <flux:sidebar.item icon="document-magnifying-glass" :href="route('history')" :current="request()->routeIs('history')" wire:navigate>
                         {{ __('Change History') }}
                     </flux:sidebar.item>
                 </flux:sidebar.group>
