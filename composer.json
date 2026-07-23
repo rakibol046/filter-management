@@ -54,7 +54,8 @@
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",
-            "@php artisan dev"
+            "@php artisan dev",
+            "@php artisan schedule:work"
         ],
         "lint": [
             "pint --parallel"
