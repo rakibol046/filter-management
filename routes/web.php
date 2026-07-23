@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FilterController;
 use App\Http\Controllers\KitController;
 use App\Http\Controllers\ChangeHistoryController;
+use App\Http\Controllers\DashboardController;
 
 // Route::view('/', 'welcome')->name('home');
 
@@ -12,7 +13,7 @@ use App\Http\Controllers\ChangeHistoryController;
 // })->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::view('/', 'dashboard')->name('dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/filters', [FilterController::class, 'index'])->name('filters');
     Route::get('/filters/create', [FilterController::class, 'create'])->name('filters.create');

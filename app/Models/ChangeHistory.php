@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Change_history extends Model
+class ChangeHistory extends Model
 {
     protected $fillable = [
         'user_id',
@@ -12,6 +12,7 @@ class Change_history extends Model
         'kit_id',
         'change_date',
         'next_change_date',
+        'status',
     ];
 
      /**

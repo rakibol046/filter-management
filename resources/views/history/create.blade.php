@@ -12,32 +12,27 @@
         </div>
 
         <div class="mb-6 rounded-lg border p-4 bg-gray-50 dark:bg-gray-900">
-    <h2 class="text-xl font-bold mb-4">{{ $filter->name }}</h2>
+            <h2 class="text-xl font-bold mb-4">{{ $filter->name }}</h2>
 
-    <div class="grid grid-cols-2 gap-4 text-sm">
-        <div>
-            <span class="font-semibold">Brand:</span>
-            {{ $filter->brand ?: 'N/A' }}
-        </div>
+            <div class="grid grid-cols-2 gap-4 text-sm">
+                <div>
+                    <span class="font-semibold">Brand:</span>
+                    {{ $filter->brand ?: 'N/A' }}
+                </div>
 
-        <div>
-            <span class="font-semibold">Model:</span>
-            {{ $filter->model ?: 'N/A' }}
-        </div>
+                <div>
+                    <span class="font-semibold">Model:</span>
+                    {{ $filter->model ?: 'N/A' }}
+                </div>
 
-        <div class="col-span-2">
-            <span class="font-semibold">Description:</span>
-            {{ $filter->description ?: 'N/A' }}
+                <div>
+                    <span class="font-semibold">Status:</span>
+                    <span class="{{ $filter->status ? 'text-green-600' : 'text-red-600' }}">
+                        {{ $filter->status ? 'Active' : 'Inactive' }}
+                    </span>
+                </div>
+            </div>
         </div>
-
-        <div>
-            <span class="font-semibold">Status:</span>
-            <span class="{{ $filter->status ? 'text-green-600' : 'text-red-600' }}">
-                {{ $filter->status ? 'Active' : 'Inactive' }}
-            </span>
-        </div>
-    </div>
-</div>
 
         <form method="POST" action="{{ route('history.store') }}">
             @csrf
@@ -47,11 +42,11 @@
                   <div>
                     <label>Select the Kit</label>
 
-                    <select name="filter_id" class="w-full border rounded p-2">
+                    <select name="kit_id" class="w-full border rounded p-2">
                         @foreach ($kits as $kit)
-                            <option class="text-black" value="{{ $kit->id }}">{{ $kit->name }}</option>
+                            <option class="text-black" value="{{ $kit->id }}">{{ $kit->name }} - {{ $kit->kit_lifespan_days }} days</option>
                         @endforeach
-                        @error('filter_id')
+                        @error('kit_id')
                             <p class="text-red-500 text-sm">{{ $message }}</p>
                         @enderror
                     </select>
@@ -62,15 +57,16 @@
 
                     <input
                         type="date"
-                        name="date"
-                        value="{{ old('date', now()->format('Y-m-d')) }}"
+                        name="change_date"
+                        value="{{ old('change_date', now()->format('Y-m-d')) }}"
                         class="w-full border rounded p-2"
                     >
 
-                    @error('date')
+                    @error('change_date')
                         <p class="text-red-500 text-sm">{{ $message }}</p>
                     @enderror
                 </div>
+                 <input type="hidden" name="filter_id" value="{{ $filter->id }}">
 
 
                

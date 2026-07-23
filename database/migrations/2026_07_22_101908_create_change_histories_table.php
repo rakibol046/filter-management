@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('kit_id')->constrained()->cascadeOnDelete();
             $table->date('change_date');
             $table->date('next_change_date');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
