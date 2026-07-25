@@ -30,6 +30,12 @@ class ChangeHistoryController extends Controller
         $kits = $filter->kits()->where('user_id', Auth::id())->get();
         // return $kits;
 
+        if ($kits->isEmpty()) {
+            return redirect()
+                ->route('kits.create')
+                ->with('info', 'No kits available for this filter. Please add a kit first.');
+        }
+
         return view('history.create', [
             'title' => 'Install Kit',
             'filter' => $filter,

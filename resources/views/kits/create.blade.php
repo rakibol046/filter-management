@@ -1,7 +1,11 @@
 <x-layouts::app :title="$title">
 
     <div class="max-w-3xl mx-auto space-y-6">
-
+        @if(session('info'))
+            <div class="rounded-lg bg-green-100 p-4 text-green-700">
+                {{ session('info') }}
+            </div>
+         @endif
        <div class="mb-6 flex items-center justify-between">
             <h1 class="text-2xl font-bold">{{ $title }}</h1>
 

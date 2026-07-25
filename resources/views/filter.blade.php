@@ -5,6 +5,11 @@
         <x-button wire:navigate href="{{ route('filters.create') }}">{{ __('Add Filter') }}</x-button>
       </div>
 
+      <div class="flex items-center gap-2">
+        <x-input wire:model="search" placeholder="Search filters..." />
+        <x-button wire:navigate href="{{ route('filters') }}">Reset</x-button>
+      </div>
+
 <div class="flex flex-col gap-4">
 
     @if(session('success'))
